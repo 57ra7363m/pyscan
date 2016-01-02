@@ -59,3 +59,5 @@ for proto in nm[host].all_protocols():
     print('port : %s\tstate : %s' % (port, nm[host][proto][port]['state']))
 
 print('----------------------------------------------------')
+
+print "Scan Complete!"

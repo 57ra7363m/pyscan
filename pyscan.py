@@ -32,6 +32,8 @@ parser.add_argument( "-t" ,"--targets", help = "Input IPs of Hosts to Scan")
 
 parser.add_argument( "-o", "--options", help = "Input options inside single quotes (ex. '-sT -sV'). For information on options go to https://nmap.org/book/man-briefoptions.html or type man nmap.")
 
+parser.add_argument("-n", "--nikto", help = "Nikto Scan, requires scan on single IP or domain name; cannot scan range")
+
 args = parser.parse_args()
 
 hosts = args.targets

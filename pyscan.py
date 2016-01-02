@@ -1,5 +1,6 @@
 import nmap
 import argparse
+import os
 
 print """
 
@@ -32,7 +33,7 @@ parser.add_argument( "-t" ,"--targets", help = "Input IPs of Hosts to Scan")
 
 parser.add_argument( "-o", "--options", help = "Input options inside single quotes (ex. '-sT -sV'). For information on options go to https://nmap.org/book/man-briefoptions.html or type man nmap.")
 
-parser.add_argument("-n", "--nikto", help = "Nikto Scan, requires scan on single IP or domain name; cannot scan range")
+parser.add_argument("-n", "--nikto", help = "Nikto Scan, requires scan on single IP or domain name; cannot scan range", action = "store_true")
 
 args = parser.parse_args()
 
@@ -40,11 +41,22 @@ hosts = args.targets
 
 options = args.options
 
+nikto = args.nikto
 
 nm = nmap.PortScanner()
 
 nm.scan(hosts= hosts, arguments= options)
-#insert NK ranges into hosts
+
+def nikto(hosts):
+  if args.nikto:
+    os.system('nikto -host %s' % hosts)
+    print nikto(hosts)
+
+  else:
+    pass
+
+  break
+
 
 for host in nm.all_hosts():
   print('----------------------------------------------------')
@@ -61,5 +73,9 @@ for proto in nm[host].all_protocols():
     print('port : %s\tstate : %s' % (port, nm[host][proto][port]['state']))
 
 print('----------------------------------------------------')
+
+nikto(hosts)
+
+
 
 print "Scan Complete!"

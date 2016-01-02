@@ -50,12 +50,14 @@ nm.scan(hosts= hosts, arguments= options)
 def nikto(hosts):
   if args.nikto:
     os.system('nikto -host %s' % hosts)
+    return nikto(hosts)
     print nikto(hosts)
+    #fix looping issue
 
   else:
     pass
 
-  break
+
 
 
 for host in nm.all_hosts():
@@ -75,6 +77,7 @@ for proto in nm[host].all_protocols():
 print('----------------------------------------------------')
 
 nikto(hosts)
+
 
 
 

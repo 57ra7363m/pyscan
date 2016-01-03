@@ -39,6 +39,8 @@ parser.add_argument("-d", "--dirb", help = "Directory Buster, requires a scan on
 
 parser.add_argument("--harvester", help = "TheHarvester, requires a scan on a single IP or domain name; cannot scan range", action = "store_true")
 
+parser.add_argument("--dmitry", help = "dmitry, requires a scan on a single IP or domain name; cannot scan range", action = "store_true")
+
 args = parser.parse_args()
 
 hosts = args.targets
@@ -50,6 +52,8 @@ nikto = args.nikto
 dirb = args.dirb
 
 harvester = args.harvester
+
+dmitry = args.dmitry
 
 nm = nmap.PortScanner()
 
@@ -79,6 +83,10 @@ if args.dirb:
 
 if args.harvester:
   os.system('theharvester %s -b all' % hosts)
+
+if args.dmitry:
+  os.system('dmitry %s' % hosts)
+  
 print ""
 print ""
 print "Scan Complete!"

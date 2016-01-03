@@ -1,6 +1,17 @@
+````
+-----------------------------------------------------------------
 
-
-PyScan
+         _     _        _          _             _             _                   _          
+        /\ \  /\ \     /\_\       / /\         /\ \           / /\                /\ \     _  
+       /  \ \ \ \ \   / / /      / /  \       /  \ \         / /  \              /  \ \   /\_\ 
+      / /\ \ \ \ \ \_/ / /      / / /\ \__   / /\ \ \       / / /\ \            / /\ \ \_/ / /
+     / / /\ \_\ \ \___/ /      / / /\ \___\ / / /\ \ \     / / /\ \ \          / / /\ \___/ / 
+    / / /_/ / /  \ \ \_/       \ \ \ \/___// / /  \ \_\   / / /  \ \ \        / / /  \/____/  
+   / / /__\/ /    \ \ \         \ \ \     / / /    \/_/  / / /___/ /\ \      / / /    / / /   
+  / / /_____/      \ \ \    _    \ \ \   / / /          / / /_____/ /\ \    / / /    / / /    
+ / / /              \ \ \  /_/\__/ / /  / / /________  / /_________/\ \ \  / / /    / / /     
+/ / /                \ \_\ \ \/___/ /  / / /_________\/ / /_       __\ \_\/ / /    / / /      
+\/_/                  \/_/  \_____\/   \/____________/\_\___\     /____/_/\/_/     \/_/       
 
 
 
@@ -23,24 +34,25 @@ usage: pyscan.py [-h] [-t TARGETS] [-o OPTIONS] [-n] [-d] [--harvester]
 
 optional arguments:
 
-  -h, --help            show this help message and exit
+-h, --help :           show this help message and exit
   
-  -t TARGETS, --targets TARGETS
+-t TARGETS, --targets: TARGETS
                         Input IPs of Hosts to Scan
                         
-  -o OPTIONS, --options OPTIONS
+ -o OPTIONS, --options: OPTIONS
                         Input options inside single quotes (ex. '-sT -sV').
                         For information on options go to https://nmap.org/book
                         /man-briefoptions.html or type man nmap.
                         
-  -n, --nikto           Nikto Scan, requires scan on single IP or domain name;
+-n, --nikto:           Nikto Scan, requires scan on single IP or domain name;
                         cannot scan range
                         
-  -d, --dirb            Directory Buster, requires a scan on a single IP or
+  -d, --dirb:            Directory Buster, requires a scan on a single IP or
                         domain name; cannot scan range
                         
-  --harvester           TheHarvester, requires a scan on a single IP or domain
+  --harvester:          TheHarvester, requires a scan on a single IP or domain
                         name; cannot scan range
                         
-  --dmitry              dmitry, requires a scan on a single IP or domain name;
+  --dmitry:             dmitry, requires a scan on a single IP or domain name;
                         cannot scan range
+````

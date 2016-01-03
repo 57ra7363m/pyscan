@@ -16,6 +16,8 @@ python-nmap
 nikto
 dirb
 
+Runs out of the box on Kali
+
 
 usage: pyscan.py [-h] [-t TARGETS] [-o OPTIONS] [-n]
 

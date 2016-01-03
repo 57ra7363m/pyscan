@@ -35,6 +35,8 @@ parser.add_argument( "-o", "--options", help = "Input options inside single quot
 
 parser.add_argument("-n", "--nikto", help = "Nikto Scan, requires scan on single IP or domain name; cannot scan range", action = "store_true")
 
+parser.add_argument("-d", "--dirb", help = "Directory Buster, requires a scan on a single IP or domain name; cannot scan range", action = "store_true")
+
 args = parser.parse_args()
 
 hosts = args.targets
@@ -42,6 +44,8 @@ hosts = args.targets
 options = args.options
 
 nikto = args.nikto
+
+dirb = args.dirb
 
 nm = nmap.PortScanner()
 
@@ -65,6 +69,9 @@ print('----------------------------------------------------')
 
 if args.nikto:
   os.system('nikto -host %s' % hosts)
+
+if args.dirb:
+  os.system('dirb http://%s' % hosts)
 
 
 print ""

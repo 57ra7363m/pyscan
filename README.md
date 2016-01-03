@@ -1,12 +1,20 @@
+
+
+PyScan
+
+
+
 Port Scanning Is Not A Crime!
 
 
-Pyscan is a simple script written in an attempt to learn how to parse arguments in python scripts.  Currently the script will run nmap and nikto scanning.  Other molules will be added soon.
+Pyscan is a simple script written in an attempt to learn how to parse arguments in python scripts.  
+Currently the script will run nmap, dirb and nikto scanning.  Other molules will be added soon.
 
 
 Dependencies
 python-nmap
 nikto
+dirb
 
 
 usage: pyscan.py [-h] [-t TARGETS] [-o OPTIONS] [-n]

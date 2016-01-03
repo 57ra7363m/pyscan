@@ -31,15 +31,24 @@ parser = argparse.ArgumentParser()
 
 parser.add_argument( "-t" ,"--targets", help = "Input IPs of Hosts to Scan")
 
-parser.add_argument( "-o", "--options", help = "Input options inside single quotes (ex. '-sT -sV'). For information on options go to https://nmap.org/book/man-briefoptions.html or type man nmap.")
-
-parser.add_argument("-n", "--nikto", help = "Nikto Scan, requires scan on single IP or domain name; cannot scan range", action = "store_true")
+parser.add_argument( "-o", "--options", help = "NMAP options. Input options inside single quotes (ex. '-sT -sV'). For information on options go to https://nmap.org/book/man-briefoptions.html or type man nmap.")
 
 parser.add_argument("-d", "--dirb", help = "Directory Buster, requires a scan on a single IP or domain name; cannot scan range", action = "store_true")
+
+parser.add_argument("--dnsmap", help = "dnsmap, requires a scan on a single IP or domain name; cannot scan range", action = "store_true")
+
+parser.add_argument("--dnsrecon", help = "dnsrecon, requires a scan on a single IP or domain name; cannot scan range", action = "store_true")
+
+parser.add_argument("--dnsenum", help = "dnsenum, requires a scan on a single IP or domain name; cannot scan range", action = "store_true")
 
 parser.add_argument("--harvester", help = "TheHarvester, requires a scan on a single IP or domain name; cannot scan range", action = "store_true")
 
 parser.add_argument("--dmitry", help = "dmitry, requires a scan on a single IP or domain name; cannot scan range", action = "store_true")
+
+parser.add_argument("--wpscan", help = "WPscan, requires a single domain name for domain running WordPress", action = "store_true")
+
+parser.add_argument("-n", "--nikto", help = "Nikto Scan, requires scan on single IP or domain name; cannot scan range", action = "store_true")
+
 
 args = parser.parse_args()
 
@@ -54,6 +63,14 @@ dirb = args.dirb
 harvester = args.harvester
 
 dmitry = args.dmitry
+
+dnsmap = args.dnsmap
+
+dnsrecon = args.dnsrecon
+
+dnsenum = args.dnsenum
+
+wpscan = args.wpscan
 
 nm = nmap.PortScanner()
 
@@ -86,6 +103,18 @@ if args.harvester:
 
 if args.dmitry:
   os.system('dmitry %s' % hosts)
+
+if args.dnsmap:
+  os.system('dnsmap %s' % hosts)
+
+if args.dnsrecon:
+  os.system('dnsrecon -d %s' % hosts)
+
+if args.dnsenum:
+  os.system('dnsenum %s' % hosts)
+
+if args.wpscan:
+  os.system('wpscan -url %s' % hosts)
   
 print ""
 print ""

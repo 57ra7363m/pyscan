@@ -47,19 +47,6 @@ nm = nmap.PortScanner()
 
 nm.scan(hosts= hosts, arguments= options)
 
-def nikto(hosts):
-  if args.nikto:
-    os.system('nikto -host %s' % hosts)
-    return nikto(hosts)
-    print nikto(hosts)
-    #fix looping issue
-
-  else:
-    pass
-
-
-
-
 for host in nm.all_hosts():
   print('----------------------------------------------------')
   print('Host : %s (%s)' % (host, nm[host].hostname()))
@@ -76,9 +63,10 @@ for proto in nm[host].all_protocols():
 
 print('----------------------------------------------------')
 
-nikto(hosts)
+if args.nikto:
+  os.system('nikto -host %s' % hosts)
 
 
-
-
+print ""
+print ""
 print "Scan Complete!"

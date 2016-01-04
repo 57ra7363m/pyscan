@@ -33,7 +33,7 @@ parser.add_argument( "-t" ,"--targets", help = "Input IPs of Hosts to Scan")
 
 parser.add_argument( "-o", "--options", help = "NMAP options. Input options inside single quotes (ex. '-sT -sV'). For information on options go to https://nmap.org/book/man-briefoptions.html or type man nmap.")
 
-parser.add_argument("-d", "--dirb", help = "Directory Buster, requires a scan on a single IP or domain name; cannot scan range", action = "store_true")
+parser.add_argument("--dirb", help = "Directory Buster, requires a scan on a single IP or domain name; cannot scan range", action = "store_true")
 
 parser.add_argument("--dnsmap", help = "dnsmap, requires a scan on a single IP or domain name; cannot scan range", action = "store_true")
 
@@ -47,7 +47,7 @@ parser.add_argument("--dmitry", help = "dmitry, requires a scan on a single IP o
 
 parser.add_argument("--wpscan", help = "WPscan, requires a single domain name for domain running WordPress", action = "store_true")
 
-parser.add_argument("-n", "--nikto", help = "Nikto Scan, requires scan on single IP or domain name; cannot scan range", action = "store_true")
+parser.add_argument("--nikto", help = "Nikto Scan, requires scan on single IP or domain name; cannot scan range", action = "store_true")
 
 
 args = parser.parse_args()

@@ -28,7 +28,6 @@ print ""
 
 parser = argparse.ArgumentParser()
 
-
 parser.add_argument( "-t" ,"--targets", help = "Input IPs of Hosts to Scan")
 
 parser.add_argument( "-o", "--options", help = "NMAP options. Input options inside single quotes (ex. '-sT -sV'). For information on options go to https://nmap.org/book/man-briefoptions.html or type man nmap.")
@@ -47,16 +46,19 @@ parser.add_argument("--dmitry", help = "dmitry, requires a scan on a single IP o
 
 parser.add_argument("--wpscan", help = "WPscan, requires a single domain name for domain running WordPress", action = "store_true")
 
+parser.add_argument("--joomscan", help = "Joomscan, requires a single domain name for domain running Joomla", action = "store_true")
+
 parser.add_argument("--nikto", help = "Nikto Scan, requires scan on single IP or domain name; cannot scan range", action = "store_true")
 
+parser.add_argument("--arachni", help = "Arachni vulnerability scan, requires scan on single IP or domain name; cannot scan range", action = "store_true")
+
+parser.add_argument("--uniscan", help = "Uniscan vulnerability scan, requires scan on single domain; cannot scan range", action = "store_true")
 
 args = parser.parse_args()
 
 hosts = args.targets
 
 options = args.options
-
-nikto = args.nikto
 
 dirb = args.dirb
 
@@ -71,6 +73,14 @@ dnsrecon = args.dnsrecon
 dnsenum = args.dnsenum
 
 wpscan = args.wpscan
+
+joomscan = args.joomscan
+
+nikto = args.nikto
+
+uniscan = args.uniscan
+
+arachni = args.arachni
 
 nm = nmap.PortScanner()
 
@@ -115,6 +125,16 @@ if args.dnsenum:
 
 if args.wpscan:
   os.system('wpscan -url %s' % hosts)
+
+if args.arachni:
+  os.system('arachni http://%s' % hosts)
+
+if args.joomscan:
+  os.system('joomscan -u %s' % hosts)
+
+if args.uniscan:
+  os.system('uniscan -u http://%s' % hosts)
+
   
 print ""
 print ""

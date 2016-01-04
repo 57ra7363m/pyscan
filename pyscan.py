@@ -54,6 +54,8 @@ parser.add_argument("--arachni", help = "Arachni vulnerability scan, requires sc
 
 parser.add_argument("--uniscan", help = "Uniscan vulnerability scan, requires scan on single domain; cannot scan range", action = "store_true")
 
+parser.add_argument("--allthethings", help = "Run All The Scans", action = "store_true")
+
 args = parser.parse_args()
 
 hosts = args.targets
@@ -81,6 +83,8 @@ nikto = args.nikto
 uniscan = args.uniscan
 
 arachni = args.arachni
+
+allthethings = args.allthethings 
 
 nm = nmap.PortScanner()
 
@@ -133,6 +137,48 @@ if args.joomscan:
   os.system('joomscan -u %s' % hosts)
 
 if args.uniscan:
+  os.system('uniscan -u http://%s' % hosts)
+
+if args.allthethings:
+  print """
+
+
+      ___           ___           ___           ___                    ___           ___       ___                                   
+     /\  \         /\  \         /\  \         /\__\                  /\  \         /\__\     /\__\                                  
+    /::\  \       /::\  \       /::\  \       /::|  |                /::\  \       /:/  /    /:/  /                                  
+   /:/\ \  \     /:/\:\  \     /:/\:\  \     /:|:|  |               /:/\:\  \     /:/  /    /:/  /                                   
+  _\:\~\ \  \   /:/  \:\  \   /::\~\:\  \   /:/|:|  |__            /::\~\:\  \   /:/  /    /:/  /                                    
+ /\ \:\ \ \__\ /:/__/ \:\__\ /:/\:\ \:\__\ /:/ |:| /\__\          /:/\:\ \:\__\ /:/__/    /:/__/                                     
+ \:\ \:\ \/__/ \:\  \  \/__/ \/__\:\/:/  / \/__|:|/:/  /          \/__\:\/:/  / \:\  \    \:\  \                                     
+  \:\ \:\__\    \:\  \            \::/  /      |:/:/  /                \::/  /   \:\  \    \:\  \                                    
+   \:\/:/  /     \:\  \           /:/  /       |::/  /                 /:/  /     \:\  \    \:\  \                                   
+    \::/  /       \:\__\         /:/  /        /:/  /                 /:/  /       \:\__\    \:\__\                                  
+     \/__/         \/__/         \/__/         \/__/                  \/__/         \/__/     \/__/                                  
+      ___           ___           ___                    ___           ___                       ___           ___           ___     
+     /\  \         /\__\         /\  \                  /\  \         /\__\          ___        /\__\         /\  \         /\  \    
+     \:\  \       /:/  /        /::\  \                 \:\  \       /:/  /         /\  \      /::|  |       /::\  \        \:\  \   
+      \:\  \     /:/__/        /:/\:\  \                 \:\  \     /:/__/          \:\  \    /:|:|  |      /:/\:\  \        \:\  \  
+      /::\  \   /::\  \ ___   /::\~\:\  \                /::\  \   /::\  \ ___      /::\__\  /:/|:|  |__   /:/  \:\  \        \:\  \ 
+     /:/\:\__\ /:/\:\  /\__\ /:/\:\ \:\__\              /:/\:\__\ /:/\:\  /\__\  __/:/\/__/ /:/ |:| /\__\ /:/__/_\:\__\ _______\:\__
+    /:/  \/__/ \/__\:\/:/  / \:\~\:\ \/__/             /:/  \/__/ \/__\:\/:/  / /\/:/  /    \/__|:|/:/  / \:\  /\ \/__/ \::::::::/__/
+   /:/  /           \::/  /   \:\ \:\__\              /:/  /           \::/  /  \::/__/         |:/:/  /   \:\ \:\__\    \:\~~\~~    
+   \/__/            /:/  /     \:\ \/__/              \/__/            /:/  /    \:\__\         |::/  /     \:\/:/  /     \:\  \     
+                   /:/  /       \:\__\                                /:/  /      \/__/         /:/  /       \::/  /       \:\__\    
+                   \/__/         \/__/                                \/__/                     \/__/         \/__/         \/__/    
+
+""" 
+  print ""
+  print ""
+  os.system('dirb http://%s' % hosts)
+  os.system('dnsmap %s' % hosts)
+  os.system('dnsrecon -d %s' % hosts)
+  os.system('dnsenum %s' % hosts)
+  os.system('theharvester %s -b all' % hosts)
+  os.system('dmitry %s' % hosts)
+  os.system('nikto -host %s' % hosts)
+  os.system('wpscan -url %s' % hosts)
+  os.system('joomscan -u %s' % hosts)
+  os.system('arachni http://%s' % hosts)
   os.system('uniscan -u http://%s' % hosts)
 
   

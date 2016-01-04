@@ -34,7 +34,7 @@ dnsmap
 dnsrecon
 
 usage: pyscan.py [-h] [-t TARGETS] [-o OPTIONS] [-d] [--dnsmap] [--dnsrecon]
-                 [--dnsenum] [--harvester] [--dmitry] [--wpscan] [-n]
+                 [--dnsenum] [--harvester] [--dmitry] [--wpscan] [-nikto]
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -45,7 +45,7 @@ optional arguments:
                         '-sT -sV'). For information on options go to
                         https://nmap.org/book/man-briefoptions.html or type
                         man nmap.
-  -d, --dirb            Directory Buster, requires a scan on a single IP or
+  --dirb            Directory Buster, requires a scan on a single IP or
                         domain name; cannot scan range
   --dnsmap              dnsmap, requires a scan on a single IP or domain name;
                         cannot scan range
@@ -59,6 +59,6 @@ optional arguments:
                         cannot scan range
   --wpscan              WPscan, requires a single domain name for domain
                         running WordPress
-  -n, --nikto           Nikto Scan, requires scan on single IP or domain name;
+  --nikto           Nikto Scan, requires scan on single IP or domain name;
                         cannot scan range
 ````

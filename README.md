@@ -32,6 +32,8 @@ wpscan
 dnsenum
 dnsmap
 dnsrecon
+arachni
+uniscan
 
 usage: pyscan.py [-h] [-t TARGETS] [-o OPTIONS] [-d] [--dnsmap] [--dnsrecon]
                  [--dnsenum] [--harvester] [--dmitry] [--wpscan] [-nikto]
@@ -61,4 +63,10 @@ optional arguments:
                         running WordPress
   --nikto           Nikto Scan, requires scan on single IP or domain name;
                         cannot scan range
+  --arachni             Arachni vulnerability scan, requires scan on single IP
+                        or domain name; cannot scan range
+  --uniscan             Uniscan vulnerability scan, requires scan on single
+                        domain; cannot scan range
+  --allthethings        Run All The Scans
+
 ````

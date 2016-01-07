@@ -30,7 +30,9 @@ parser = argparse.ArgumentParser()
 
 parser.add_argument( "-t" ,"--targets", help = "Input IPs of Hosts to Scan")
 
-parser.add_argument( "-o", "--options", help = "NMAP options. Input options inside single quotes (ex. '-sT -sV'). For information on options go to https://nmap.org/book/man-briefoptions.html or type man nmap.")
+parser.add_argument("--nmap", help = "NMAP", action = "store_true")
+
+parser.add_argument( "-o", "--options", help = "NMAP options. For information on options go to https://nmap.org/book/man-briefoptions.html or type man nmap.")
 
 parser.add_argument("--dirb", help = "Directory Buster, requires a scan on a single IP or domain name; cannot scan range", action = "store_true")
 
@@ -56,9 +58,16 @@ parser.add_argument("--uniscan", help = "Uniscan vulnerability scan, requires sc
 
 parser.add_argument("--allthethings", help = "Run All The Scans", action = "store_true")
 
+parser.add_argument("--sublist3r", help = "Sublist3r (https://github.com/aboul3la/Sublist3r), directory must be stored in same directory as pyscan.py; requires scan on single domain, cannot scan range", action = "store_true")
+
+
+
+
 args = parser.parse_args()
 
 hosts = args.targets
+
+nmap = args.nmap
 
 options = args.options
 
@@ -86,25 +95,14 @@ arachni = args.arachni
 
 allthethings = args.allthethings 
 
-nm = nmap.PortScanner()
+sublist3r = args.sublist3r
 
-nm.scan(hosts= hosts, arguments= options)
 
-for host in nm.all_hosts():
-  print('----------------------------------------------------')
-  print('Host : %s (%s)' % (host, nm[host].hostname()))
-  print('State : %s' % nm[host].state())
 
-for proto in nm[host].all_protocols():
-  print('----------')
-  print('Protocol : %s' % proto)
 
-  lport = nm[host][proto].keys()
-  lport.sort()
-  for port in lport:
-    print('port : %s\tstate : %s' % (port, nm[host][proto][port]['state']))
 
-print('----------------------------------------------------')
+if args.nmap:
+  os.system('nmap %s %s' % (options, hosts))
 
 if args.nikto:
   os.system('nikto -host %s' % hosts)
@@ -139,6 +137,9 @@ if args.joomscan:
 if args.uniscan:
   os.system('uniscan -u http://%s' % hosts)
 
+if args.sublist3r:
+  os.system('cd Sublist3r && python sublist3r.py -d %s' % hosts)
+
 if args.allthethings:
   print """
 
@@ -169,6 +170,7 @@ if args.allthethings:
 """ 
   print ""
   print ""
+  os.system('nmap %s %s' % (options, hosts))
   os.system('dirb http://%s' % hosts)
   os.system('dnsmap %s' % hosts)
   os.system('dnsrecon -d %s' % hosts)

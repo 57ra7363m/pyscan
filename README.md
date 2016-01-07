@@ -19,7 +19,8 @@ Port Scanning Is Not A Crime!
 
 
 Pyscan is a simple script written in an attempt to learn how to parse arguments in python scripts.  
-Currently the script will run nmap, dirb, Sublist3r, joomscan, arachni, uniscan, wpscan, dnsenum, dnsmap, dnsrecon, theHarvester, dmitry and nikto scanning.  Other molules will be added soon.
+Currently the script will run nmap, dirb, Sublist3r, joomscan, arachni, uniscan, wpscan, dnsenum,
+dnsmap, dnsrecon, theHarvester, dmitry and nikto scanning.  Other molules will be added soon.
 
 
 Dependencies

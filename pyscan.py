@@ -36,6 +36,8 @@ parser.add_argument( "-o", "--options", help = "NMAP options. For information on
 
 parser.add_argument("--dirb", help = "Directory Buster, requires a scan on a single IP or domain name; cannot scan range", action = "store_true")
 
+parser.add_argument("--sublist3r", help = "Sublist3r (https://github.com/aboul3la/Sublist3r), directory must be stored in same directory as pyscan.py; requires scan on single domain, cannot scan range", action = "store_true")
+
 parser.add_argument("--dnsmap", help = "dnsmap, requires a scan on a single IP or domain name; cannot scan range", action = "store_true")
 
 parser.add_argument("--dnsrecon", help = "dnsrecon, requires a scan on a single IP or domain name; cannot scan range", action = "store_true")
@@ -58,7 +60,6 @@ parser.add_argument("--uniscan", help = "Uniscan vulnerability scan, requires sc
 
 parser.add_argument("--allthethings", help = "Run All The Scans", action = "store_true")
 
-parser.add_argument("--sublist3r", help = "Sublist3r (https://github.com/aboul3la/Sublist3r), directory must be stored in same directory as pyscan.py; requires scan on single domain, cannot scan range", action = "store_true")
 
 
 

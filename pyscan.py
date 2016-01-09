@@ -173,6 +173,7 @@ if args.allthethings:
   print ""
   os.system('nmap %s %s' % (options, hosts))
   os.system('dirb http://%s' % hosts)
+  os.system('cd Sublist3r && python sublist3r.py -d %s' % hosts)
   os.system('dnsmap %s' % hosts)
   os.system('dnsrecon -d %s' % hosts)
   os.system('dnsenum %s' % hosts)
